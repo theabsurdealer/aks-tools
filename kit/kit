@@ -652,7 +652,7 @@ cmd_orphan_clean() {
         echo "Deleting: $pod (context: $ctx, namespace: $ns)" >&2
         kubectl --context "$ctx" -n "$ns" delete pod "$pod" --wait=false >/dev/null 2>&1 \
           || echo "  Failed to delete $pod" >&2
-        ((deleted++))
+        deleted=$((deleted + 1))
       done <<< "$pods"
     done
   done

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Deprecated: use `kit console` (or `kit console-exec`).
+# Deprecated: use `kit console`.
 # This shim forwards to kit so old muscle memory keeps working.
 case "${1:-}" in
   --list|-l|--list-orphaned) shift; exec kit list-orphaned "$@" ;;
   --cleanup|--cleanup-all)   shift; exec kit cleanup "$@" ;;
-  --exec)                    shift; exec kit console-exec "$@" ;;
+  --exec)                    shift; KIT_ATTACH_MODE=exec exec kit console "$@" ;;
   --attach)                  shift; exec kit console "$@" ;;
   -h|--help)                 exec kit --help ;;
   *)                         exec kit console "$@" ;;

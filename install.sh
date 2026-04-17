@@ -8,13 +8,15 @@ set -euo pipefail
 
 REPO="zaidhassan168/aks-tools"
 BRANCH="${BRANCH:-main}"
-INSTALL_DIR="${INSTALL_DIR:-/usr/local/bin}"
+DEFAULT_DIR="/usr/local/bin"
+INSTALL_DIR="${INSTALL_DIR:-$DEFAULT_DIR}"
 
-# If user can't write to /usr/local/bin and didn't override, fall back to ~/bin.
-if [[ ! -w "$INSTALL_DIR" ]] && [[ -z "${INSTALL_DIR_OVERRIDE:-}" ]]; then
+# If using the default dir and we can't write to it, fall back to ~/bin.
+# If the user explicitly set INSTALL_DIR, honour it as-is.
+if [[ "$INSTALL_DIR" == "$DEFAULT_DIR" && ! -w "$INSTALL_DIR" ]]; then
   INSTALL_DIR="$HOME/bin"
-  mkdir -p "$INSTALL_DIR"
 fi
+mkdir -p "$INSTALL_DIR"
 
 raw="https://raw.githubusercontent.com/$REPO/$BRANCH"
 
